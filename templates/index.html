@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="conversion-card col-lg-6 col-md-8 col-sm-10">
+    <div class="card">
+        <div class="card-header">
+            Convert Currency
+        </div>
+        <div class="card-body">
+
+            <form action="/" method="POST">
+
+                <div class="form-group">
+                    <label for="source">Choose Your Source Currency:</label>
+                    <select id="source" name="source" class="form-control">
+                        <option value="EUR">EUR</option> 
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" name="amount" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="target">Choose Your Target Currency:</label>
+                    <select id="target" name="target" class="form-control">
+                        <option value="USD">USD</option> 
+                        <option value="CAD">CAD</option> 
+                        <option value="AUD">AUD</option> 
+                    </select>
+                </div>
+
+                <input type="submit" id="submit" class="btn btn-primary" value="Convert">
+
+                {% if results %}
+                    <div class="results alert alert-success">
+                        <strong>1</strong> {{results.source}} IS <strong>{{results.rate}}</strong>{{results.target}}<br>
+                        <strong>{{results.amount}} </strong>{{results.source}} IS <strong>{{results.target_amount}}</strong> {{results.target}}<br>
+                        AS OF NOW
+                    </div>
+                {% endif %}
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

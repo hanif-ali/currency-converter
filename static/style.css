@@ -1,0 +1,10 @@
+.conversion-card{
+    margin: auto;
+    margin-top: 20px;
+}
+.btn[type="submit"]{
+    margin-bottom: 10px;
+}
+.results{
+    line-height: 2em;
+}
