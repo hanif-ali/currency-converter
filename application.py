@@ -33,3 +33,33 @@ def index():
 
 
     return render_template("index.html", results = results)
+
+@app.route("/convert", methods=["POST"])
+def convert():
+    target = request.form.get("target")
+    amount = request.form.get("amount")
+    source = request.form.get("source")
+
+    results = {"success": False}
+
+    if target and amount and source:
+        api_url = "http://data.fixer.io/api/latest"
+        params = {"access_key": cl_api_key, "symbols":target, "base": source}
+
+        res = requests.get(api_url, params)
+
+        data = res.json()
+
+        if data["success"]:
+
+            rate = data["rates"][target]
+            target_amount = rate*float(amount)
+
+            results["success"] = True
+            results["amount"] = amount
+            results["target_amount"] = target_amount
+            results["target"] = target
+            results["rate"] = rate
+            results["source"] = source
+
+        return results

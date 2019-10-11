@@ -8,13 +8,19 @@ function load_data(){
     request.open("POST", "/convert");
     request.onload = ()=>{
         const results = JSON.parse(request.responseText);
-        if(data.results){
-            var result = document.createElement();
-            result.setAttribute("class", "results alert alert-success");
-            result.innerHTML = `<strong>1</strong> ${results.source} IS <strong>${results.rate}</strong>${results.target}<br>\
-            <strong>${results.amount} </strong>${results.source} IS <strong>${results.target_amount}</strong> ${results.target}<br>`
+        if(results.success){
+            var result = document.createElement("div");
 
-            result_wrapper = document.querySelector("#result_wrapper")
+            result_html = `<strong>1</strong> ${results.source} IS <strong>${results.rate}</strong>${results.target}<br>`;
+            result_html += `<strong>${results.amount} </strong>${results.source} IS <strong>${results.target_amount}</strong> ${results.target}<br>`;
+            
+            result.innerHTML = result_html;
+
+            result.setAttribute("class", "results alert alert-success");
+
+            result_wrapper = document.querySelector("#result_wrapper");
+            result_wrapper.innerHTML = "";
+            result_wrapper.appendChild(result);
 
         }
 
