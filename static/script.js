@@ -10,9 +10,13 @@ function load_data(){
 
     request.onload = ()=>{
         const results = JSON.parse(request.responseText);
+
+        var result = document.createElement("div");
+        result_wrapper = document.querySelector("#result_wrapper");
+        result_wrapper.innerHTML = "";
+
         if(results.success){
  
-            var result = document.createElement("div");
 
             result_html = `<strong>1</strong> ${results.source} IS <strong>${results.rate}</strong>${results.target}<br>`;
             result_html += `<strong>${results.amount} </strong>${results.source} IS <strong>${results.target_amount}</strong> ${results.target}<br>`;
@@ -21,8 +25,13 @@ function load_data(){
 
             result.setAttribute("class", "results alert alert-success");
 
-            result_wrapper = document.querySelector("#result_wrapper");
-            result_wrapper.innerHTML = "";
+            result_wrapper.appendChild(result);
+
+        }
+        else{
+            result.setAttribute("class", "results alert alert-danger")
+            result_html = "Sorry, The Application incurred some internal error."
+            result.innerHTML = result_html
             result_wrapper.appendChild(result);
 
         }
