@@ -18,7 +18,7 @@ function load_data(){
         if(results.success){
  
 
-            result_html = `<strong>1</strong> ${results.source} IS <strong>${results.rate}</strong>${results.target}<br>`;
+            result_html = `<strong>1</strong> ${results.source} IS <strong>${results.rate}</strong> ${results.target}<br>`;
             result_html += `<strong>${results.amount} </strong>${results.source} IS <strong>${results.target_amount}</strong> ${results.target}<br>`;
             
             result.innerHTML = result_html;
