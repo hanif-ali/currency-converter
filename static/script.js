@@ -38,9 +38,25 @@ function load_data(){
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    var conv_form = document.querySelector("#conv_form")
+    var conv_form = document.querySelector("#conv_form");
+    var amount_field = conv_form.querySelector('#amount');
+    var submit_btn = conv_form.querySelector("#submit");
     conv_form.addEventListener("submit", (e)=>{
         e.preventDefault()
         load_data()
-    })
-})
+    });
+
+    amount_field.addEventListener("keyup", ()=>{
+        if(!amount_field.value){
+            submit_btn.setAttribute("disabled", "disabled");
+        }
+        else{
+            submit_btn.removeAttribute("disabled");
+        }
+
+
+    });
+
+});
+
+

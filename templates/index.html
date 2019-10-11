@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="conversion-card col-lg-6 col-md-8 col-sm-10">
+<div class="animated slideInLeft conversion-card col-lg-6 col-md-8 col-sm-10">
     <div class="card">
         <div class="card-header">
             Convert Currency
@@ -31,7 +31,7 @@
                     </select>
                 </div>
 
-                <input type="submit" id="submit" class="btn btn-primary" value="Convert">
+                <input type="submit" id="submit" class="btn btn-primary" value="Convert" disabled>
 
                 <div id="result_wrapper">
                 {% if results %}
