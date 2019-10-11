@@ -1,14 +1,17 @@
 function load_data(){
+
     const request = new XMLHttpRequest();
+
     var source = document.querySelector("#source").value;
     var target = document.querySelector("#target").value;
     var amount = document.querySelector("#amount").value;
-    console.log(`${amount} in ${source} to ${target}`)
 
     request.open("POST", "/convert");
+
     request.onload = ()=>{
         const results = JSON.parse(request.responseText);
         if(results.success){
+ 
             var result = document.createElement("div");
 
             result_html = `<strong>1</strong> ${results.source} IS <strong>${results.rate}</strong>${results.target}<br>`;
@@ -35,8 +38,8 @@ function load_data(){
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    var submit_btn = document.querySelector("#conv_form")
-    submit_btn.addEventListener("submit", (e)=>{
+    var conv_form = document.querySelector("#conv_form")
+    conv_form.addEventListener("submit", (e)=>{
         e.preventDefault()
         load_data()
     })
